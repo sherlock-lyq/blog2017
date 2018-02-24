@@ -444,8 +444,7 @@ body {
 }
 .header-inner {
   margin: 0 auto;
-  /*padding: 100px 0 70px;*/
-  padding: 70px 0 70px;
+  padding: 100px 0 70px;
   width: 700px;
 }
 @media (min-width: 1600px) {
@@ -1454,7 +1453,7 @@ pre .javascript .function {
   display: none;
 }
 .posts-expand .post-title {
-  /*text-align: center;*/
+  text-align: center;
   word-break: break-word;
   font-weight: 400;
 }
@@ -1496,12 +1495,11 @@ pre .javascript .function {
   font-size: 16px;
 }
 .posts-expand .post-meta {
-  /*margin: 3px 0 60px 0;*/
-  margin: 3px 0 40px 0;
+  margin: 3px 0 60px 0;
   color: #999;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
-  /*text-align: center;*/
+  text-align: center;
 }
 .posts-expand .post-meta .post-category-list {
   display: inline-block;
@@ -1824,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffedff;
+  background: #ffde55;
 }
 .links-of-blogroll {
   font-size: 13px;
