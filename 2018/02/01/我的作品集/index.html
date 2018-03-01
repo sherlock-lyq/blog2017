@@ -129,7 +129,61 @@
 
 
 
+<style type="text/css">
+  #wrapper {
+        width: 700px;
+        margin: 0 auto;
+      }
+      
+      .brand-list {
+        width: 700px;
+        overflow: hidden;
+        
+      }
 
+      .brand-list img{
+        width: 197px;
+      }
+      
+      .brand-list .brand-bd {
+        position: relative;
+        
+        margin-top: 5px;
+      }
+      
+      .brand-list .item {
+        position: absolute;
+        width: 202px;
+        background-color: #f8f8f8;
+        border: 1px solid #f8f8f8;
+        padding: 10px;
+        top: 0;
+        left: 40%;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        transition: all 0.3s;
+      }
+      
+      .brand-list .hover {
+        box-shadow: 0px 1px 8px rgba(200, 200, 200, .6);
+        background-color: #fff;
+        border-color: #c8c8c8;
+      }
+
+      .brand-list .additem {
+        padding: 0;
+        width: 240px;
+        border: none;
+      }
+
+      .brand-list .item p {
+        text-align: center;
+        margin-top: 5px;
+          color: #555;
+      }
+</style>
 
 
 
@@ -179,11 +233,21 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/home/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archive/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
           </a>
         </li>
       
@@ -313,11 +377,61 @@
     
     <div class="post-body" itemprop="articleBody">
 
-      
-      
-
-      
-        
+      <div id="wrapper">
+            <div class="brand-list">
+              <div class="brand-bd cle" id="brand-waterfall">
+                <!-- 循环字母模块 item -->
+                <div class="item" id="brand-a">
+                  <img src="../../../../img/私人订制服装.jpg">
+                  <p>私人订制服装</p>
+                </div>
+                <div class="item" id="brand-b">
+                  <img src="../../../../img/私服_分类.jpg">
+                  <p>私服_分类</p>
+                </div>
+                <div class="item" id="brand-c">
+                  <img src="../../../../img/私服_商品详情页.jpg">
+                  <p>私服_商品详情页</p>
+                </div>
+                <div class="item" id="brand-d">
+                  <img src="../../../../img/设计师简介.jpg">
+                  <p>设计师简介</p>
+                </div>
+                <div class="item" id="brand-e">
+                  <img src="../../../../img/购物车.jpg">
+                  <p>购物车</p>
+                </div>
+                <div class="item" id="brand-f">
+                  <img src="../../../../img/水果商城.jpg">
+                  <p>水果商城</p>
+                </div>
+                <div class="item" id="brand-g">
+                  <img src="../../../../img/商品评价.jpg">
+                  <p>商品评价</p>
+                </div>
+                <div class="item" id="brand-h">
+                  <img src="../../../../img/我的收藏.jpg">
+                  <p>我的收藏</p>
+                </div>
+                <div class="item" id="brand-i">
+                  <img src="../../../../img/一元购.jpg">
+                  <p>一元购</p>
+                </div>
+                <div class="item" id="brand-j">
+                  <img src="../../../../img/中奖页面.jpg">
+                  <p>中奖页面</p>
+                </div>
+                <div class="item" id="brand-k">
+                  <img src="../../../../img/朋友圈.jpg">
+                  <p>朋友圈</p>
+                </div>
+                <div class="item" id="brand-l">
+                  <img src="../../../../img/订单详情.jpg">
+                  <p>订单详情</p>
+                </div>
+              </div>
+            </div>
+          </div>
       
     </div>
     
@@ -421,7 +535,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives">
+                <a href="/archive/">
               
                   <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
@@ -619,7 +733,97 @@
   <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
+<script>
+      $(function() {
 
+        $('#brand-waterfall').waterfall();
+      });
+
+      // 瀑布流插件
+      // pannysp 2013.4.9
+      ;
+      (function($) {
+        $.fn.waterfall = function(options) {
+          var df = {
+            item: '.item',
+            margin: 8,
+            addfooter: true
+          };
+          options = $.extend(df, options);
+          return this.each(function() {
+            var $box = $(this),
+              pos = [],
+              _box_width = $box.width(),
+              $items = $box.find(options.item),
+              _owidth = $items.eq(0).outerWidth() + options.margin,
+              _oheight = $items.eq(0).outerHeight() + options.margin,
+              _num = Math.floor(_box_width / _owidth);
+
+            (function() {
+              var i = 0;
+              for(; i < _num; i++) {
+                pos.push([i * _owidth, 0]);
+              }
+            })();
+
+            $items.each(function() {
+              var _this = $(this),
+                _temp = 0,
+                _height = _this.outerHeight() + options.margin;
+
+              _this.hover(function() {
+                _this.addClass('hover');
+              }, function() {
+                _this.removeClass('hover');
+              });
+
+              for(var j = 0; j < _num; j++) {
+                if(pos[j][1] < pos[_temp][1]) {
+                  //暂存top值最小那列的index
+                  _temp = j;
+                }
+              }
+              this.style.cssText = 'left:' + pos[_temp][0] + 'px; top:' + pos[_temp][1] + 'px;';
+              //插入后，更新下该列的top值
+              pos[_temp][1] = pos[_temp][1] + _height;
+            });
+
+            // 计算top值最大的赋给外围div
+            (function() {
+              var i = 0,
+                tops = [];
+              for(; i < _num; i++) {
+                tops.push(pos[i][1]);
+              }
+              tops.sort(function(a, b) {
+                return a - b;
+              });
+              $box.height(tops[_num - 1]);
+
+              //增加尾部填充div
+              if(options.addfooter) {
+                addfooter(tops[_num - 1]);
+              }
+
+            })();
+
+            function addfooter(max) {
+              var addfooter = document.createElement('div');
+              addfooter.className = 'item additem';
+              for(var i = 0; i < _num; i++) {
+                if(max != pos[i][1]) {
+                  var clone = addfooter.cloneNode(),
+                    _height = max - pos[i][1] - options.margin;
+                  clone.style.cssText = 'left:' + pos[i][0] + 'px; top:' + pos[i][1] + 'px; height:' + _height + 'px;';
+                  $box[0].appendChild(clone);
+                }
+              }
+            }
+
+          });
+        }
+      })(jQuery);
+    </script>
   
 
 
